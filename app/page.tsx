@@ -1,3 +1,5 @@
+'use client';
+
 import * as S from './page.module';
 
 export default function Home() {

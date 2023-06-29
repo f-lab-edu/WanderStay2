@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'NanumSquareNeo';
+    font-weight: 300;
+    font-style: normal;
+    src: url('../public/fonts/NanumSquareNeoTTF-aLt.eot');
+    src: url('../public/fonts/NanumSquareNeoTTF-aLt.eot?#iefix') format('embedded-opentype'),
+    url('../public/fonts/NanumSquareNeoTTF-aLt.woff') format('woff'),
+    url('../public/fonts/NanumSquareNeoTTF-aLt.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo';
+    font-weight: 400;
+    src: url('../public/fonts/NanumSquareNeoTTF-bRg.eot');
+    src: url('../public/fonts/NanumSquareNeoTTF-bRg.eot?#iefix') format('embedded-opentype'),
+    url('../public/fonts/NanumSquareNeoTTF-bRg.woff') format('woff'),
+    url('../public/fonts/NanumSquareNeoTTF-bRg.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo';
+    font-weight: 500;
+    src: url('../public/fonts/NanumSquareNeoTTF-cBd.eot');
+    src: url('../public/fonts/NanumSquareNeoTTF-cBd.eot?#iefix') format('embedded-opentype'),
+    url('../public/fonts/NanumSquareNeoTTF-cBd.woff') format('woff'),
+    url('../public/fonts/NanumSquareNeoTTF-cBd.woff2') format('woff2');
+    font-display: swap;
+}
+@font-face {
+    font-family: 'NanumSquareNeo';
+    font-weight: 600;
+    src: url('../public/fonts/NanumSquareNeoTTF-dEb.eot');
+    src: url('../public/fonts/NanumSquareNeoTTF-dEb.eot?#iefix') format('embedded-opentype'),
+    url('../public/fonts/NanumSquareNeoTTF-dEb.woff') format('woff'),
+    url('../public/fonts/NanumSquareNeoTTF-dEb.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NanumSquareNeo';
+    font-weight: bold;
+    src: url('../public/fonts/NanumSquareNeoTTF-eHv.eot');
+    src: url('../public/fonts/NanumSquareNeoTTF-eHv.eot?#iefix') format('embedded-opentype'),
+    url('../public/fonts/NanumSquareNeoTTF-eHv.woff') format('woff'),
+    url('../public/fonts/NanumSquareNeoTTF-eHv.woff2') format('woff2');
+    font-display: swap;
+}

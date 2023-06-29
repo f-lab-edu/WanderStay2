@@ -1,6 +1,6 @@
 'use client';
-
-import { globalStyles } from '@/styles/GlobalStyle';
+import {Global} from '@emotion/react';
+import { globalStyles } from '../styles/GlobalStyle';
 
 export default function RootLayout({
   children,
@@ -9,8 +9,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ko'>
-      {globalStyles}
-      <body>{children}</body>
+      <body>
+      <>
+        <Global styles={globalStyles}/>
+        {children}
+      </>
+      </body>
     </html>
   );
 }
