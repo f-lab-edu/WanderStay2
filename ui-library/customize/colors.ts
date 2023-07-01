@@ -58,24 +58,3 @@ export const information = {
     information800: '#072993',
     information900: '#041C7A',
 }
-
-const headLine = {
-    size100 : '12px',
-    size200 : '14px',
-    size300 : '16px',
-    size400 : '20px',
-    size500 : '24px',
-    size700 : '36px',
-    size800 : '48px',
-}
-
-const heading = {
-    size100 : '10px',
-    size200 : '12px',
-}
-
-const bodyText = {
-    size100 : '12px',
-    size200 : '14px',
-    size300 : '16px',
-}
