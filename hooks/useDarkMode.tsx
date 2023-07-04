@@ -1,13 +1,15 @@
+import LocalStorage from "@/utils/localStorageUtil";
 import {useEffect, useState} from 'react';
 import {lightTheme, darkTheme, ColorTheme} from "@/styles/theme";
 
 export const useDarkMode = () => {
     const [colorTheme, setColorTheme] = useState<ColorTheme>(lightTheme);
+    const localStorage = new LocalStorage();
 
     const setMode = (mode: ColorTheme) => {
         mode === lightTheme
-            ? window.localStorage.setItem('theme', 'light')
-            : window.localStorage.setItem('theme', 'dark');
+            ? localStorage.setItem('theme', 'light')
+            : localStorage.setItem('theme', 'dark');
         setColorTheme(mode);
     }
 
@@ -16,10 +18,10 @@ export const useDarkMode = () => {
     }
 
     useEffect(() => {
-        const localTheme = window.localStorage.getItem('theme');
+        const localTheme = localStorage.getItem('theme');
 
-        if(localTheme !== null) {
-            if(localTheme === 'dark') {
+        if (localTheme !== null) {
+            if (localTheme === 'dark') {
                 setColorTheme(darkTheme);
                 document.body.dataset.theme = 'dark';
             } else {
@@ -27,7 +29,7 @@ export const useDarkMode = () => {
                 document.body.dataset.theme = 'light';
             }
         }
-    },[colorTheme]);
+    }, [colorTheme]);
 
     return {colorTheme, toggleColorTheme}
 }
