@@ -1,4 +1,8 @@
 export const color = {
+    primary: '#FCD240',
+    secondary : '#FD5B1F',
+    defaultBlack : '#1B1B1B',
+
     brand : {
         brand100: '#FEF9D8',
         brand200: '#FEF3B2',
@@ -23,7 +27,6 @@ export const color = {
         black800: '#0F080A',
         black900: '#0C0507',
     },
-
 
     success : {
         success100: '#D1FCDA',
