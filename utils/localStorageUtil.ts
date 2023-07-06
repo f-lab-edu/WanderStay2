@@ -2,7 +2,22 @@ export default class LocalStorage {
     private data: { [key: string]: { value: string; expiry: string } } = {};
 
     constructor() {
+        if (!this.isLocalStorageSupported()) {
+            console.error('Local storage is not supported');
+            return;
+        }
         this.loadData();
+    }
+
+    private isLocalStorageSupported(): boolean {
+        try {
+            const localStorage = typeof window !== 'undefined' ? window.localStorage : null;
+            localStorage.setItem('test', 'test');
+            localStorage.removeItem('test');
+            return true;
+        } catch (error) {
+            return false;
+        }
     }
 
     private loadData(): void {
@@ -13,8 +28,12 @@ export default class LocalStorage {
 
     private saveData(): void {
         const localStorage = typeof window !== 'undefined' ? window.localStorage : null;
-        if (localStorage) {
-            localStorage.setItem('data', JSON.stringify(this.data));
+        try {
+            if (localStorage) {
+                localStorage.setItem('data', JSON.stringify(this.data));
+            }
+        } catch (error) {
+            console.error('Error occurred while saving data', error);
         }
     }
 
@@ -36,20 +55,24 @@ export default class LocalStorage {
     }
 
     public setItem(key: string, value: string, ttl?: number): void {
-        const now = new Date();
-        let expiryDate: Date | undefined = undefined;
+        try {
+            const now = new Date();
+            let expiryDate: Date | undefined = undefined;
 
-        if (ttl) {
-            expiryDate = new Date(now.getTime() + ttl * 3600000);
+            if (ttl) {
+                expiryDate = new Date(now.getTime() + ttl * 3600000);
+            }
+
+            const item = {
+                value: value,
+                expiry: expiryDate ? expiryDate.toISOString() : ''
+            };
+
+            this.data[key] = item;
+            this.saveData();
+        } catch (error) {
+            console.error('Error occurred while setting item', error);
         }
-
-        const item = {
-            value: value,
-            expiry: expiryDate ? expiryDate.toISOString() : ''
-        };
-
-        this.data[key] = item;
-        this.saveData();
     }
 
     public removeItem(key: string): void {

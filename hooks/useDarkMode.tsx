@@ -8,8 +8,8 @@ export const useDarkMode = () => {
 
     const setMode = (mode: ColorTheme) => {
         mode === lightTheme
-            ? localStorage.setItem('theme', 'light')
-            : localStorage.setItem('theme', 'dark');
+            ? localStorage.setItem('travel-theme-frontend-v1', 'light')
+            : localStorage.setItem('travel-theme-frontend-v1', 'dark');
         setColorTheme(mode);
     }
 
@@ -18,7 +18,7 @@ export const useDarkMode = () => {
     }
 
     useEffect(() => {
-        const localTheme = localStorage.getItem('theme');
+        const localTheme = localStorage.getItem('travel-theme-frontend-v1');
 
         if (localTheme !== null) {
             if (localTheme === 'dark') {
