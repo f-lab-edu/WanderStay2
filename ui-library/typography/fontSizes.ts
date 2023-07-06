@@ -1,6 +1,4 @@
-export type FontSizes = {
-    [key: string]: string
-};
+type FontSizes = typeof fontSizes;
 
 export const fontSizes: FontSizes = {
     size100: '12px',

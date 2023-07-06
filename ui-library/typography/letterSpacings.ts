@@ -1,6 +1,4 @@
-export type LetterSpacings = {
-    [key: string]: string;
-};
+type LetterSpacings = typeof letterSpacings;
 
 export const letterSpacings: LetterSpacings = {
     spacing100: '0.12px',

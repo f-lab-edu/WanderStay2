@@ -1,6 +1,4 @@
-export type FontWeights = {
-    [key: string]: number
-};
+type FontWeights = typeof fontWeights;
 
 export const fontWeights: FontWeights = {
     light: 300,

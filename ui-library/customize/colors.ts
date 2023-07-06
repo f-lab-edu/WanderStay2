@@ -1,4 +1,6 @@
-export const color = {
+type Colors = typeof color;
+
+export const color:Colors = {
     primary: '#FCD240',
     secondary : '#FD5B1F',
     defaultBlack : '#1B1B1B',

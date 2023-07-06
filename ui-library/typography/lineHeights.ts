@@ -1,8 +1,6 @@
-export type LineHeights = {
-    [key: string]: number;
-};
+type LineHeights = typeof lineHeights;
 
-export const lineHeights: LineHeights = {
+export const lineHeights:LineHeights = {
     line100: 1.2083,
     line200: 1.2143,
     line300: 1.2778,
