@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {ThemeContext} from '@/pages/_app';
+import {ThemeContext} from '@/context/themeContext';
 import styled from '@emotion/styled';
 import {lightTheme, ColorTheme} from '@/styles/theme';
 
