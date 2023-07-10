@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-module.exports = nextConfig
+const nextConfig = {
+    experimental: {
+      turbo: {
+        loaders: {
+          ".svg": ["@svgr/webpack"],
+        },
+      },
+    },
+  };
+  
+  module.exports = nextConfig;
+  
