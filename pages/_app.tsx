@@ -1,17 +1,15 @@
-import React from 'react';
-import {AppProps} from 'next/app';
-import {Global} from '@emotion/react';
-import {globalStyles} from '@/styles/globalStyle';
-import {ThemeProvider} from "@/context/themeContext";
-import DarkModeToggle from "@/components/commons/headers/headerBtns/darkModeToggle";
 
+import {AppProps} from 'next/app';
+import {Global, ThemeProvider} from '@emotion/react';
+import {globalStyles} from '../styles/globalStyle';
+import {theme} from '@/ui-library/theme';
 
 export default function App({Component, pageProps}: AppProps) {
     return (
-        <ThemeProvider>
+        <ThemeProvider theme={theme}>
             <Global styles={globalStyles}/>
-            <DarkModeToggle/>
             <Component {...pageProps} />
         </ThemeProvider>
     );
 }
+
