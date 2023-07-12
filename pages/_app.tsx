@@ -1,3 +1,4 @@
+
 import {AppProps} from 'next/app';
 import {Global, ThemeProvider} from '@emotion/react';
 import {globalStyles} from '../styles/globalStyle';
@@ -11,3 +12,4 @@ export default function App({Component, pageProps}: AppProps) {
         </ThemeProvider>
     );
 }
+
