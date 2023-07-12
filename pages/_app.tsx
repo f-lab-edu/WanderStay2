@@ -1,17 +1,19 @@
+
 import App, { AppContext, AppProps } from 'next/app';
-import { Global } from '@emotion/react';
+import {Global, ThemeProvider} from '@emotion/react';
 import { globalStyles } from '../styles/globalStyle';
+import {theme} from '@/ui-library/theme';
 import { alertNotSupportDesktop } from '@/utils/common';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   alertNotSupportDesktop(pageProps.isMobile);
 
   return (
-    <div>
-      <Global styles={globalStyles} />
-      <Component {...pageProps} />
-    </div>
-  );
+        <ThemeProvider theme={theme}>
+            <Global styles={globalStyles}/>
+            <Component {...pageProps} />
+        </ThemeProvider>
+    );
 }
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
@@ -25,3 +27,4 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
 
   return { ...initialProps };
 };
+
