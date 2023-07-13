@@ -97,9 +97,18 @@ export const globalStyles = css`
 
   body {
     line-height: 1;
-    background-color: white;
   }
-
+  
+  body[data-theme="light"] {
+    background: #fff;
+    color: #222; 
+  }
+  
+  body[data-theme="dark"] {
+    background: #222;
+    color: #fff; 
+  }
+  
   ol,
   ul,
   li {
@@ -109,7 +118,7 @@ export const globalStyles = css`
   a {
     text-decoration: none;
   }
-
+   
   @font-face {
     font-family: 'NanumSquareNeo';
     font-weight: 300;
