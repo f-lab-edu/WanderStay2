@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { buttonStyle } from '@/ui-library/customize/button';
+import buttonStyle from '@/ui-library/customize/button';
 
 export interface CommonButtonProps extends React.ComponentProps<'button'> {
   fullWidth: boolean;
