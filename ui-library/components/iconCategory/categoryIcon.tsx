@@ -18,7 +18,7 @@ const IconBackground = styled.div<CategoryIconProps>`
     border-radius: 25px;
 `;
 
-const ImageWithShadow = styled(Image)`
+const StyledImage = styled(Image)`
     filter: drop-shadow(0px 4px 10px rgba(59, 125, 21, 0.3));
 `;
 
@@ -28,17 +28,26 @@ const sizeMap: { [key in CategoryIconProps['size']]: number } = {
 };
 
 const CategoryIcon = ({name, size = 'small'}: CategoryIconProps) => {
-    const iconSize = sizeMap[size] || parseInt(size);
+    if (!name in category) {
+        throw new Error(`이름이 잘못 되었습니다.`);
+    }
+
+    if (size !== 'small' && size !== 'medium') {
+        throw new Error('입력하신 사이즈가 없습니다.');
+    }
+
+    const iconSize = sizeMap[size] || sizeMap['small'];
 
     return (
         <IconBackground size={size}>
-            <ImageWithShadow
+            <StyledImage
                 src={category[name]}
                 alt={name}
                 width={iconSize}
                 height={iconSize}
                 quality={100}
                 placeholder="blur"
+                onError={(e) => console.log(e.target.name)}
             />
         </IconBackground>
     );
