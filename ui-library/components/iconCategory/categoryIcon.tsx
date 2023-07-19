@@ -15,7 +15,7 @@ const IconBackground = styled.div<CategoryIconProps>`
     height: ${props => (props.size === 'small' ? '44px' : '70px')};
     padding: 10px;
     background: #fafafa;
-    border-radius: 25px;
+    border-radius: ${props => (props.size === 'small' ? '15px' : '25px')};
 `;
 
 const StyledImage = styled(Image)`
