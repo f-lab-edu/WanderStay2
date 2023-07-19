@@ -14,7 +14,7 @@ export const ThemeContext = createContext<ContextProps>({
     }
 })
 
-export const ThemeProvider = ({children}) => {
+export const DarkModeProvider = ({children}) => {
     const {colorTheme, toggleColorTheme} = useDarkMode();
 
     return (
