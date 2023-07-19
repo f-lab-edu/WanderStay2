@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@svgr/webpack": "^8.0.1",
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
@@ -22,5 +23,8 @@
     "react-dom": "18.2.0",
     "react-responsive": "^9.0.2",
     "typescript": "5.1.5"
+  },
+  "devDependencies": {
+    "turbopack": "^0.0.1"
   }
 }
