@@ -1,7 +1,10 @@
+
 import App, {AppContext, AppProps} from 'next/app';
 import {Global, ThemeProvider} from '@emotion/react';
 import {globalStyles} from '../styles/globalStyle';
 import {theme} from '@/ui-library/theme';
+
+import FontLayout from "@/components/fonts";
 import {alertNotSupportDesktop} from '@/utils/common';
 import DarkModeToggle from "@/components/commons/headers/headerBtns/darkModeToggle";
 import {DarkModeProvider} from "@/context/themeContext";
@@ -14,8 +17,11 @@ export default function MyApp({Component, pageProps}: AppProps) {
             <DarkModeProvider>
                 <DarkModeToggle/>
                 <Global styles={globalStyles}/>
+                  <FontLayout>
                 <Component {...pageProps} />
+                 </FontLayout>
             </DarkModeProvider>
+
         </ThemeProvider>
     );
 }
