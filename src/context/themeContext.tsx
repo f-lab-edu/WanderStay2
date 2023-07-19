@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useDarkMode } from "@/hooks/useDarkMode";
+import { useDarkMode } from "@/src/hooks/useDarkMode";
 import { lightTheme, ColorTheme } from "@/src/styles/theme";
 
 interface ContextProps {
@@ -14,7 +14,11 @@ export const ThemeContext = createContext<ContextProps>({
   },
 });
 
-export const DarkModeProvider = ({ children }) => {
+export const DarkModeProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const { colorTheme, toggleColorTheme } = useDarkMode();
 
   return (

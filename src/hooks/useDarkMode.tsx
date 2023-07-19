@@ -1,4 +1,4 @@
-import LocalStorage from "@/utils/localStorageUtil";
+import LocalStorage from "@/src/utils/localStorageUtil";
 import { useEffect, useState } from "react";
 import { lightTheme, darkTheme, ColorTheme } from "@/src/styles/theme";
 
