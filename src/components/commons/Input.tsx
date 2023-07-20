@@ -1,14 +1,14 @@
-import styled from '@emotion/styled';
-import inputStyle from '@/ui-library/customize/input';
-import InputTitle from './InputTitle';
+import styled from "@emotion/styled";
+import inputStyle from "@/src/ui-library/customize/input";
+import InputTitle from "./InputTitle";
 
-export interface InputComponentProps extends React.ComponentProps<'input'> {
-  inputBoxSize: 'sm' | 'lg';
+export interface InputComponentProps extends React.ComponentProps<"input"> {
+  inputBoxSize: "sm" | "lg";
   inputTitle: string;
   isHide: boolean;
   category: Extract<
     React.HTMLInputTypeAttribute,
-    'text' | 'password' | 'search'
+    "text" | "password" | "search"
   >;
 }
 
@@ -16,14 +16,14 @@ type InputProps = Partial<InputComponentProps>;
 
 type WapperProps = Pick<
   InputComponentProps,
-  'inputBoxSize' | 'isHide' | 'category'
+  "inputBoxSize" | "isHide" | "category"
 >;
 
 export const Input = ({
-  inputBoxSize = 'lg',
+  inputBoxSize = "lg",
   isHide = false,
   title,
-  category = 'text',
+  category = "text",
   ...props
 }: InputProps) => {
   return (
@@ -49,7 +49,7 @@ const InputWrapper = styled.input<WapperProps>((props) => ({
 }));
 
 const Wrapper = styled.div({
-  display: 'inline-block',
-  margin: '12px',
-  position: 'relative',
+  display: "inline-block",
+  margin: "12px",
+  position: "relative",
 });
