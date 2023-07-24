@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import inputStyle from '@/src/ui-library/customize/input';
 import InputTitle from './InputTitle';
+import React, { LegacyRef } from 'react';
 
 export interface InputComponentProps extends React.ComponentProps<'input'> {
   inputBoxSize: 'sm' | 'lg';
@@ -19,30 +20,37 @@ type WapperProps = Pick<
   'inputBoxSize' | 'isHide' | 'category'
 >;
 
-export const Input = ({
-  inputBoxSize = 'lg',
-  isHide = false,
-  title,
-  category = 'text',
-  className,
-  ...props
-}: InputProps) => {
-  return (
-    <Wrapper className={className}>
-      <InputTitle>{title}</InputTitle>
-      <InputWrapper
-        inputBoxSize={inputBoxSize}
-        isHide={isHide}
-        category={category}
-        type={props.type}
-        size={props.size}
-        value={props.value}
-        onChange={props.onChange}
-        style={props.style}
-      ></InputWrapper>
-    </Wrapper>
-  );
-};
+// eslint-disable-next-line react/display-name
+export const Input = React.forwardRef(
+  (
+    {
+      inputBoxSize = 'lg',
+      isHide = false,
+      title,
+      category = 'text',
+      className,
+      ...props
+    }: InputProps,
+    ref: LegacyRef<HTMLInputElement> | undefined
+  ) => {
+    return (
+      <Wrapper className={className}>
+        <InputTitle>{title}</InputTitle>
+        <InputWrapper
+          ref={ref}
+          inputBoxSize={inputBoxSize}
+          isHide={isHide}
+          category={category}
+          type={props.type}
+          size={props.size}
+          value={props.value}
+          onChange={props.onChange}
+          style={props.style}
+        ></InputWrapper>
+      </Wrapper>
+    );
+  }
+);
 
 const InputWrapper = styled.input<WapperProps>((props) => ({
   ...inputStyle.default,
