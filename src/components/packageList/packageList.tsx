@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Image from "next/image";
-import {theme} from "@/src/ui-library/theme";
 import StarReview from "@/src/components/starReview/starReview";
 import Icon from "@/src/ui-library/components/icons/svg";
 
@@ -49,9 +48,7 @@ const PackageListItemHeader = styled.div`
 const PackListTitle = styled.h2`
   line-height: ${({theme}) => theme.typography.lineHeights.line600};
   color: ${({theme}) => theme.color.black.black900};
-  font-size: ${({theme}) => theme.typography.fontSizes.size300};
-  font-weight: ${({theme}) => theme.typography.fontWeights.medium};
-  letter-spacing: ${({theme}) => theme.typography.letterSpacings.spacing300};
+  ${({theme}) => theme.typography.textStyles.textStyles400};
 `
 
 const WishlistIconWrapper = styled.div`
@@ -61,9 +58,7 @@ const WishlistIconWrapper = styled.div`
 const PackListPrice = styled.p`
   line-height: ${({theme}) => theme.typography.lineHeights.line700};
   color: ${({theme}) => theme.color.secondary};
-  font-size: ${({theme}) => theme.typography.fontSizes.size200};
-  font-weight: ${({theme}) > theme.typography.fontWeights.regular};
-  letter-spacing: ${({theme}) => theme.typography.letterSpacings.spacing200};
+  ${({theme}) => theme.typography.textStyles.textStyles300};
 `
 
 const StarReviewWrapper = styled.div`
@@ -78,9 +73,7 @@ const StarReviewWrapper = styled.div`
 const PackageScore = styled.div`
   line-height: ${({theme}) => theme.typography.lineHeights.line700};
   color: ${({theme}) => theme.color.black.black900};
-  font-size: ${({theme}) => theme.typography.fontSizes.size100};
-  font-weight: ${({theme}) => theme.typography.fontWeights.semiBold};
-  letter-spacing: ${({theme}) => theme.typography.letterSpacings.spacing100};
+  ${({theme}) => theme.typography.textStyles.textStyles200};
 `
 
 const TravelDescription = styled.p`
@@ -88,9 +81,7 @@ const TravelDescription = styled.p`
   max-height: 35px;
   line-height: ${({theme}) => theme.typography.lineHeights.line700};
   color: ${({theme}) => theme.color.black.black400};
-  font-size: ${({theme}) => theme.typography.fontSizes.size100};
-  font-weight: ${({theme}) => theme.typography.fontWeights.regular};
-  letter-spacing: ${({theme}) => theme.typography.letterSpacings.spacing100};
+  ${({theme}) => theme.typography.textStyles.textStyles100};
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -108,7 +99,7 @@ const PackageList = () => {
         <>
             <PackageListContainer>
                 <PackageListContent>
-                    <PackageL업istImages
+                    <PackageListImages
                         src="/images/beach2.jpg"
                         alt="Beach"
                         width={86}
@@ -124,7 +115,7 @@ const PackageList = () => {
                         </PackageListItemHeader>
                         <PackListPrice>{formatCurrency(5000)}</PackListPrice>
                         <StarReviewWrapper>
-                            <StarReview size={"small"} amount={4} variant={"Reviews"}/>
+                            <StarReview size={"sm"} amount={4} variant={"Reviews"}/>
                             <PackageScore>4.8</PackageScore>
                         </StarReviewWrapper>
                         <TravelDescription>description</TravelDescription>
