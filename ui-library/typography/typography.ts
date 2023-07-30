@@ -6,6 +6,7 @@ import {letterSpacings} from "@/ui-library/typography/letterSpacings";
 import {headline} from "@/ui-library/typography/headline";
 import {heading} from "@/ui-library/typography/heading";
 import {bodyText} from "@/ui-library/typography/bodyText";
+import {textStyles} from "@/ui-library/typography/textStyles";
 
 export const typography = {
     fontFamilys,
@@ -16,4 +17,5 @@ export const typography = {
     headline,
     heading,
     bodyText,
+    textStyles
 };
