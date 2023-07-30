@@ -4,7 +4,7 @@ import Icon from "@/src/ui-library/components/icons/svg";
 import {theme} from "@/src/ui-library/theme";
 
 interface StarOption {
-    size: "small" | "medium" | "large";
+    size: "sm" | "md" | "lg";
     amount: 1 | 2 | 3 | 4 | 5;
     variant: "Review" | "Reviews";
 }
@@ -13,17 +13,17 @@ const StarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-content: center;
-  column-gap: ${(props) => (props.variant === "Review" ? "unset" : "10px")};
+  column-gap: ${(props) => (props.variant === "Review" ? "0px" : "10px")};
 `;
 
 const StarReview: React.FC<StarOption> = ({size, amount, variant}) => {
     const sizeToIconSize = {
-        small: 12,
-        medium: 20,
-        large: 30,
+        sm: 12,
+        md: 20,
+        lg: 30,
     };
 
-    const iconSize = sizeToIconSize[size] || 12;
+    const iconSize = sizeToIconSize[size];
 
     if (variant === "Review") {
         return (
