@@ -4,28 +4,28 @@ import {letterSpacings} from "@/ui-library/typography/letterSpacings";
 
 export const textStyles = {
     textStyles100: {
-        fontSizes: fontSizes.size100,
-        fontWeights: fontWeights.regular,
-        letterSpacings: letterSpacings.spacing100
+        fontSize: fontSizes.size100,
+        fontWeight: fontWeights.regular,
+        letterSpacing: letterSpacings.spacing100
     },
     textStyles200: {
-        fontSizes: fontSizes.size100,
-        fontWeights: fontWeights.semiBold,
-        letterSpacings: letterSpacings.spacing100
+        fontSize: fontSizes.size100,
+        fontWeight: fontWeights.semiBold,
+        letterSpacing: letterSpacings.spacing100
     },
     textStyles300: {
-        fontSizes: fontSizes.size200,
-        fontWeights: fontWeights.regular,
-        letterSpacings: letterSpacings.spacing200
+        fontSize: fontSizes.size200,
+        fontWeight: fontWeights.regular,
+        letterSpacing: letterSpacings.spacing200
     },
     textStyles400: {
-        fontSizes: fontSizes.size300,
-        fontWeights: fontWeights.medium,
-        letterSpacings: letterSpacings.spacing300
+        fontSize: fontSizes.size300,
+        fontWeight: fontWeights.medium,
+        letterSpacing: letterSpacings.spacing300
     },
     textStyles500: {
-        fontSizes: fontSizes.size300,
-        fontWeights: fontWeights.semiBold,
-        letterSpacings: letterSpacings.spacing300
+        fontSize: fontSizes.size300,
+        fontWeight: fontWeights.semiBold,
+        letterSpacing: letterSpacings.spacing300
     }
 }

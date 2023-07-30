@@ -59,7 +59,7 @@ const ToggleButton = styled.button<CategoryListProps & { checked: boolean }>`
 `;
 
 const CheckboxTitle = styled.h4`
-  font-size: ${({theme}) => theme.typography.textStyles.textStyles500};
+  ${({ theme }) => theme.typography.textStyles.textStyles500};
   text-transform: capitalize;
 `;
 
