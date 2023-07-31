@@ -1,5 +1,3 @@
-type FontFamilys = typeof fontFamilys;
-
-export const fontFamilys: FontFamilys = {
-    fontDefault: 'NanumSquareNeo'
+export const fontFamilys = {
+  fontDefault: 'NanumSquareNeo',
 };

@@ -1,6 +1,6 @@
-import { bodyText } from "@/src/ui-library/typography/bodyText";
-import { color } from "./colors";
-import { InputComponentProps } from "@/src/components/commons/Input";
+import { bodyText } from '@/src/ui-library/typography/bodyText';
+import { color } from './colors';
+import { InputComponentProps } from '@/src/components/commons/Input';
 
 type InputStyle = {
   default: InputDefaultStyle;
@@ -8,25 +8,26 @@ type InputStyle = {
 };
 type InputDefaultStyle = Partial<React.CSSProperties>;
 type InputPseudoSelector = {
-  "&:focus": Partial<React.CSSProperties>;
+  '&:focus': Partial<React.CSSProperties>;
 };
-type InputCategoryKey = InputComponentProps["category"];
+type InputCategoryKey = InputComponentProps['category'];
 type InputCategory = Record<
   InputCategoryKey,
   Partial<React.CSSProperties> & Partial<InputPseudoSelector>
 >;
 
 const inputDefaultStyle: InputDefaultStyle = {
-  display: "flex",
-  width: "315px",
-  padding: "17px 20px",
-  alignItems: "center",
-  borderRadius: "15px",
+  display: 'flex',
+  padding: '17px 20px',
+  width: '100%',
+  alignItems: 'center',
+  borderRadius: '15px',
+  boxSizing: 'border-box',
 };
 
 const inputPseudoSelector: InputPseudoSelector = {
-  "&:focus": {
-    outline: "none",
+  '&:focus': {
+    outline: 'none',
     border: `1px solid ${color.brand.brand500}`,
   },
 };
@@ -48,9 +49,9 @@ const inputCategory: InputCategory = {
   },
   search: {
     color: color.black.black300,
-    border: "none",
+    border: 'none',
     backgroundColor: color.black.black100,
-    outline: "none",
+    outline: 'none',
     ...bodyText.bodyText200,
   },
 };
