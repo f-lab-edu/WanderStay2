@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { Input } from '../commons/Input';
@@ -6,8 +6,9 @@ import styled from '@emotion/styled';
 import LoginButtons from './LoginButtons';
 import SaveId from './SaveId';
 import FindPassword from './FindPassword';
-import loginApi from '@/src/apis/login.api';
+import loginApi, { LoginResponse } from '@/src/apis/login.api';
 import useAuth from '@/src/context/authContext';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 export default function LoginForm({ className }: React.ComponentProps<'form'>) {
   const { setAuth } = useAuth();
@@ -17,7 +18,6 @@ export default function LoginForm({ className }: React.ComponentProps<'form'>) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     emailRef.current?.focus();
@@ -27,29 +27,32 @@ export default function LoginForm({ className }: React.ComponentProps<'form'>) {
     e.preventDefault();
 
     try {
-      const response = await loginApi({ email, password });
-
-      const accessToken = response?.data?.accessToken;
-      const user = response?.data?.user;
-
-      if (!accessToken || !user) {
-        throw new Error('데이터 없음');
+      const response: AxiosResponse<LoginResponse> = await loginApi({
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        const { token, user } = response.data;
+        document.cookie = `token=${token}; path=/`;
+        setAuth({ user, accessToken: token });
+        setEmail('');
+        setPassword('');
+        router.push('/');
       }
-
-      setAuth({ user, accessToken });
-      setEmail('');
-      setPassword('');
-      setSuccess(true);
     } catch (error) {
-      console.log(error);
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 401) {
+          setErrorMessage('이메일 혹은 비밀번호를 확인해주세요');
+        }
+      } else {
+        console.warn(error);
+      }
     }
   };
 
-  {
-    success && router.push('/');
-  }
   return (
     <Wrapper className={className} onSubmit={handleSubmit}>
+      {errorMessage ? <ErrorMessage>{errorMessage}</ErrorMessage> : null}
       <Input
         title='Email'
         value={email}
@@ -71,23 +74,29 @@ export default function LoginForm({ className }: React.ComponentProps<'form'>) {
   );
 }
 
-const Wrapper = styled.form({
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-});
+const Wrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 
-const PasswordInput = styled(Input)({
-  marginTop: '27px',
-});
+const PasswordInput = styled(Input)`
+  margin-top: 27px;
+`;
 
-const LoginButtonStyled = styled(LoginButtons)({
-  marginTop: '100px',
-});
+const LoginButtonStyled = styled(LoginButtons)`
+  margin-top: 100px;
+`;
 
-const WrapperSaveIdAndFindPassword = styled.div({
-  display: 'flex',
-  justifyContent: 'space-between',
-  width: '100%',
-  marginTop: '18px',
-});
+const WrapperSaveIdAndFindPassword = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 18px;
+`;
+
+const ErrorMessage = styled.div`
+  margin-bottom: 15px;
+  background-color: ${(props) => props.theme.color.error.error500};
+  padding: 15px;
+`;

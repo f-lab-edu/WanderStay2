@@ -4,28 +4,46 @@ import {
   SetStateAction,
   createContext,
   useContext,
+  useEffect,
   useState,
 } from 'react';
+import { User } from '../apis/login.api';
 
 interface ProviderProps {
   children: ReactNode;
 }
 
+interface AuthState {
+  user?: User;
+  accessToken: string;
+}
+
 interface ContextProps {
-  auth: any;
-  setAuth: Dispatch<SetStateAction<{}>>;
+  auth: AuthState;
+  setAuth: Dispatch<SetStateAction<AuthState>>;
 }
 
 const AuthContext = createContext<ContextProps>({
-  auth: {},
+  auth: {
+    accessToken: '',
+  },
   setAuth: () => {
     return null;
   },
 });
 
 export const AuthProvider = ({ children }: ProviderProps) => {
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState({
+    accessToken: '',
+  });
 
+  useEffect(() => {
+    const savedToken = document.cookie.replace(
+      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
+      '$1'
+    );
+    setAuth({ accessToken: savedToken });
+  }, []);
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
