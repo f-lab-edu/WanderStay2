@@ -1,5 +1,5 @@
 import Logo from '@/src/components/commons/Logo';
-import LoginForm from '@/src/components/login/LoginForm';
+import _LoginForm from '@/src/components/login/LoginForm';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -7,7 +7,7 @@ export default function login() {
   return (
     <Wrapper>
       <MainLogo />
-      <LoginFormStyled />
+      <LoginForm />
     </Wrapper>
   );
 }
@@ -27,6 +27,6 @@ const MainLogo = styled(Logo)({
   marginTop: '150px',
 });
 
-const LoginFormStyled = styled(LoginForm)({
+const LoginForm = styled(_LoginForm)({
   marginTop: '100px',
 });
