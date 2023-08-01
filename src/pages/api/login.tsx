@@ -2,12 +2,12 @@ import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 interface User {
-  id: number;
+  id: string;
   email: string;
   password: string;
 }
 
-const users: User[] = [{ id: 1, email: 'test@test.com', password: 'test' }];
+const users: User[] = [{ id: '1', email: 'test@test.com', password: 'test' }];
 
 function authenticateUser({
   email,
