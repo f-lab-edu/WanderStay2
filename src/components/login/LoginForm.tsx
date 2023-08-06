@@ -11,7 +11,7 @@ import useAuth from '@/src/context/authContext';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 export default function LoginForm({ className }: React.ComponentProps<'form'>) {
-  const { setAuth } = useAuth();
+  const { setAuth, setIsAuthenticate } = useAuth();
   const router = useRouter();
   const emailRef = useRef<HTMLInputElement>(null);
 
@@ -35,9 +35,15 @@ export default function LoginForm({ className }: React.ComponentProps<'form'>) {
         const { token, user } = response.data;
         document.cookie = `token=${token}; path=/`;
         setAuth({ user, accessToken: token });
+        setIsAuthenticate(true);
         setEmail('');
         setPassword('');
-        router.push('/');
+        const from = router.query.from || '/';
+        if (Array.isArray(from)) {
+          router.push(from[0]);
+        } else {
+          router.push(from);
+        }
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {

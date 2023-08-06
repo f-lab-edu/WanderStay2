@@ -7,9 +7,20 @@ import { alertNotSupportDesktop } from '@/src/utils/common';
 import DarkModeToggle from '@/src/components/commons/headers/headerBtns/darkModeToggle';
 import { DarkModeProvider } from '@/src/context/themeContext';
 import { AuthProvider } from '../context/authContext';
+import { ReactElement, ReactNode } from 'react';
+import { NextPage } from 'next';
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   alertNotSupportDesktop(pageProps.isMobile);
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <ThemeProvider theme={theme}>
@@ -17,9 +28,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <DarkModeToggle />
         <Global styles={globalStyles} />
         <FontLayout>
-          <AuthProvider>
-            <Component {...pageProps} />
-          </AuthProvider>
+          <AuthProvider>{getLayout(<Component {...pageProps} />)}</AuthProvider>
         </FontLayout>
       </DarkModeProvider>
     </ThemeProvider>
