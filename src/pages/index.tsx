@@ -1,21 +1,10 @@
 import React, { useEffect } from 'react';
 
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
+import { authServerSideProps } from '../utils/authServerSideProps';
 
-export default function Home({
-  isAuthenticated,
-}: {
-  isAuthenticated: boolean;
-}) {
-  const router = useRouter();
-  useEffect(() => {
-    if (!isAuthenticated) {
-      router.push('/auth/login');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthenticated]);
-
+export default function Home() {
   return (
     <div>
       <h1>Home</h1>
@@ -23,19 +12,13 @@ export default function Home({
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const token = req.headers.cookie
-    ? req.headers.cookie.replace(
-        /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
-        '$1'
-      )
-    : null;
-
-  const isAuthenticated = !!token;
-
+const homeServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
   return {
-    props: {
-      isAuthenticated,
-    },
+    props: {},
   };
 };
+
+export const getServerSideProps: GetServerSideProps =
+  authServerSideProps(homeServerSideProps);
