@@ -3,20 +3,20 @@ import styled from "@emotion/styled";
 import Icon from "@/src/ui-library/components/icons/svg";
 import {theme} from "@/src/ui-library/theme";
 
-interface StarOption {
+interface StarReviewType {
     size: "sm" | "md" | "lg";
-    amount: 1 | 2 | 3 | 4 | 5;
+    amount: number;
     variant: "Review" | "Reviews";
 }
 
-const StarContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-  column-gap: ${(props) => (props.variant === "Review" ? "0px" : "10px")};
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: ${(props) => (props.variant === "Review" ? "0px" : "10px")};
 `;
 
-const StarReview: React.FC<StarOption> = ({size, amount, variant}) => {
+const StarReview: React.FC<StarReviewType> = ({size, amount, variant}) => {
     const sizeToIconSize = {
         sm: 12,
         md: 20,
@@ -28,7 +28,7 @@ const StarReview: React.FC<StarOption> = ({size, amount, variant}) => {
     if (variant === "Review") {
         return (
             <>
-                <StarContainer>
+                <Wrapper>
                     <Icon
                         name={"Star"}
                         width={iconSize}
@@ -36,17 +36,17 @@ const StarReview: React.FC<StarOption> = ({size, amount, variant}) => {
                         viewBox={"0 0 30 30"}
                         color={theme.color.brand.brand500}
                     />
-                </StarContainer>
+                </Wrapper>
             </>
         );
     }
 
-    const brand500Stars = Math.min(amount, 5);
+    const brand500Stars = Math.floor(amount);
     const black100Stars = 5 - brand500Stars;
 
     return (
         <>
-            <StarContainer>
+            <Wrapper>
                 {[...Array(brand500Stars)].map((_, index) => (
                     <Icon
                         key={index}
@@ -68,7 +68,7 @@ const StarReview: React.FC<StarOption> = ({size, amount, variant}) => {
                         color={theme.color.black.black100}
                     />
                 ))}
-            </StarContainer>
+            </Wrapper>
         </>
     );
 };

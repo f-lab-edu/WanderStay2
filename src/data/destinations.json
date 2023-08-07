@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Kuta Beach",
+    "destinationInfo": "Bali, Indonesia",
+    "amount": 4.8,
+    "wish": true,
+    "images": "https://ai.esmplus.com/kndr57/online/kutaBeach.png"
+  },
+  {
+    "id": 2,
+    "name": "Bromo Mountain",
+    "destinationInfo": "Jawa Ti, Indonesia",
+    "amount": 4.0,
+    "wish": false,
+    "images": "https://ai.esmplus.com/kndr57/online/bromoMountain.png"
+  }
+]
